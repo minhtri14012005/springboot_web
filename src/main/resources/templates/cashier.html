@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thu ngân</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+<div class="tables">
+    <h3>Sơ đồ bàn</h3>
+    <div class="table-grid" id="tableList"></div>
+</div>
+
+<div class="menu">
+    <h3>Menu</h3>
+    <div class="menu-grid" id="menuList"></div>
+</div>
+
+<div class="bill">
+    <h3>Bill</h3>
+    <div id="billList"></div>
+    <h4 id="total">Tổng: 0đ</h4>
+    <button class="pay-btn" onclick="pay()">Thanh toán</button>
+</div>
+
+<!-- LOAD THEO THỨ TỰ -->
+<script src="../static/js/table.js"></script>
+<script src="../static/js/menu.js"></script>
+<script src="../static/js/bill.js"></script>
+<script src="../static/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a2e;
+    padding: 15px 40px;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo h2 {
+    font-size: 22px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #e94560;
+}
+
+/* ================= INTRO ================= */
+.intro {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.intro h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.intro button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.intro button:hover {
+    background: #c73652;
+}
+
+/* ================= LOGIN + REGISTER ================= */
+
+/* 👉 FIX: tránh bị navbar đè */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f6fb;
+    padding: 20px;
+}
+
+/* 👉 nếu có navbar thì đẩy xuống */
+body.login-page {
+    padding-top: 70px;
+}
+
+/* FORM AREA */
+.login-form-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD */
+.login-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* TEXT */
+.login-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.form-input:focus {
+    border-color: #e94560;
+    outline: none;
+}
+
+/* BUTTON */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background: #c73652;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .login-page,
+    .register-page {
+        padding: 10px;
+    }
+
+    .login-card {
+        padding: 25px;
+    }
+}
+body {
+    display: flex;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+/* BÀN */
+.tables {
+    width: 30%;
+    background: #f4f6fb;
+    padding: 20px;
+}
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.table {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.empty { background: #22c55e; }
+.busy { background: #ef4444; }
+
+/* MENU */
+.menu {
+    width: 40%;
+    padding: 20px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.food {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.food:hover {
+    background: #f0f0f0;
+}
+
+/* BILL */
+.bill {
+    width: 30%;
+    background: #fafafa;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+}
+
+.bill-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 3px;
+}
+
+.pay-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body class="login-page">
+
+<div class="login-form-area">
+    <div class="login-card">
+
+        <h2 class="login-title">Đăng nhập</h2>
+        <p class="login-subtitle">Vui lòng nhập tài khoản</p>
+
+        <!-- THÔNG BÁO LỖI -->
+        <div id="error-msg" style="display:none; color:red; margin-bottom:10px;">
+            Sai tài khoản hoặc mật khẩu
+        </div>
+
+        <!-- FORM -->
+        <form onsubmit="login(); return false;">
+
+            <div class="form-group">
+                <label class="form-label">Tài khoản</label>
+                <input type="text" id="username" class="form-input" placeholder="Nhập username">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Mật khẩu</label>
+                <input type="password" id="password" class="form-input" placeholder="Nhập password">
+            </div>
+
+            <button type="submit" class="btn-login">Đăng nhập</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    function login() {
+        const user = document.getElementById("username").value.trim();
+        const pass = document.getElementById("password").value.trim();
+        const error = document.getElementById("error-msg");
+
+        // ❌ chưa nhập thì KHÔNG báo lỗi
+        if (user === "" || pass === "") {
+            error.style.display = "none";
+            return;
+        }
+
+        // ✅ tài khoản demo
+        if (user === "admin" && pass === "123") {
+            window.location.href = "admin.html";
+        } else {
+            error.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

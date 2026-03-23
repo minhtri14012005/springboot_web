@@ -1,0 +1,46 @@
+package com.restaurant.controller;
+
+import com.restaurant.dto.request.MonAnRequest;
+import com.restaurant.dto.response.*;
+import com.restaurant.exception.ErrorCode;
+import com.restaurant.service.MonAnService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/admin/menu")
+@RequiredArgsConstructor
+public class MenuController {
+
+    private final MonAnService service;
+
+    @PostMapping
+    public ApiResponse<MonAnResponse> create(@RequestBody MonAnRequest request) {
+        return ApiResponse.<MonAnResponse>builder()
+                .code(ErrorCode.SUCCESS.getCode())
+                .message(ErrorCode.SUCCESS.getMessage())
+                .result(service.create(request))
+                .build();
+    }
+
+    @GetMapping
+    public ApiResponse<List<MonAnResponse>> getAll() {
+        return ApiResponse.<List<MonAnResponse>>builder()
+                .code(ErrorCode.SUCCESS.getCode())
+                .message(ErrorCode.SUCCESS.getMessage())
+                .result(service.getAll())
+                .build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ApiResponse<?> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ApiResponse.builder()
+                .code(ErrorCode.SUCCESS.getCode())
+                .message("Xóa thành công")
+                .result(null)
+                .build();
+    }
+}
