@@ -1,26 +1,31 @@
-/**
- * admin-hoaDon.js
- * Chỉ xử lý logic UI cho trang Lịch sử Hóa đơn
- * HTML được Thymeleaf render sẵn trong admin.html
- * Phụ thuộc: admin-core.js
- */
-
 'use strict';
 
-/* ─────────────────────────────────────────────────
-   XEM CHI TIẾT HÓA ĐƠN
-   Thymeleaf đã render sẵn div#chiTiet-{id}
-   JS chỉ ẩn cái cũ và hiện cái mới
-───────────────────────────────────────────────── */
-function xemChiTietHoaDon(id) {
-    // Ẩn tất cả các div chi tiết
-    document.querySelectorAll('[id^="chiTiet-"]').forEach(el => {
-        el.style.display = 'none';
+let hoaDons = JSON.parse(localStorage.getItem('hoaDons')) || [];
+
+function renderHoaDon() {
+    const tbody = document.querySelector('#tableHoaDon tbody');
+    if (!tbody) return;
+
+    tbody.innerHTML = '';
+
+    if (hoaDons.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8">🧾 Không có hóa đơn</td></tr>`;
+        return;
+    }
+
+    hoaDons.forEach((hd, i) => {
+        tbody.innerHTML += `
+        <tr>
+            <td>${i+1}</td>
+            <td>#HD${i}</td>
+            <td>${hd.ban}</td>
+            <td>${hd.nv}</td>
+            <td>${hd.time}</td>
+            <td>${hd.tong}</td>
+            <td>✓</td>
+            <td><button>Xem</button></td>
+        </tr>`;
     });
-
-    // Hiện div của hóa đơn được chọn
-    const chiTiet = document.getElementById(`chiTiet-${id}`);
-    if (chiTiet) chiTiet.style.display = 'block';
-
-    openModal('modalHoaDon');
 }
+
+document.addEventListener('DOMContentLoaded', renderHoaDon);
