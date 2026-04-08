@@ -499,3 +499,62 @@ td[colspan] {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 }
+.container { display: grid;
+     grid-template-columns: 1fr 2fr 1.5fr;
+     gap: 10px;
+     height: 100vh;
+     padding: 10px;
+     box-sizing: border-box;
+ }
+.panel {
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-y: auto;
+    border-radius: 5px;
+   }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px; }
+
+/* Bàn ăn */
+.table-card {
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+ }
+.status-empty {
+    background-color: #28a745;
+}
+/* Xanh */
+.status-occupied {
+    background-color: #dc3545;
+} /* Đỏ */
+
+/* Món ăn */
+.food-card {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+ }
+.food-card img {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+}
+
+/* Bill */
+#bill-table {
+    width: 100%;
+    border-collapse: collapse; }
+.btn-pay {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

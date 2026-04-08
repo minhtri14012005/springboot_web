@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Nhà hàng ABC</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
     <div class="logo">
         <h2>Nhà hàng ABC</h2>
     </div>
 
     <div class="menu">
-        <!-- SỬA: thêm .html -->
         <a href="/login">Đăng nhập</a>
         <a href="/admin">Admin</a>
     </div>
 </nav>
 
-<!-- INTRO -->
 <div class="intro">
     <h1>Chào mừng đến với Nhà hàng ABC</h1>
     <p>Hệ thống quản lý và thu ngân hiện đại</p>

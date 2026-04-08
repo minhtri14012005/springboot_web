@@ -1,35 +1,48 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Thu ngân</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Giao diện Thu ngân</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-
 <body>
+<div class="container">
+    <div class="panel">
+        <h3>Sơ đồ bàn</h3>
+        <div id="table-grid" class="grid"></div>
+    </div>
 
-<div class="tables">
-    <h3>Sơ đồ bàn</h3>
-    <div class="table-grid" id="tableList"></div>
+    <div class="panel">
+        <h3>Menu món ăn</h3>
+        <div id="menu-grid" class="grid"></div>
+    </div>
+
+    <div class="panel bill-panel">
+        <h3>Hóa đơn: <span id="current-table-name">...</span></h3>
+        <div class="bill-list">
+            <table id="bill-table">
+                <thead>
+                <tr><th>Món</th><th>SL</th><th>Giá</th><th>Tổng</th></tr>
+                </thead>
+                <tbody id="bill-items-body"></tbody>
+            </table>
+        </div>
+        <div class="bill-footer">
+            <h4>Tổng: <span id="total-price">0đ</span></h4>
+            <button onclick="handlePayment()" class="btn-pay">Thanh toán</button>
+        </div>
+    </div>
 </div>
 
-<div class="menu">
-    <h3>Menu</h3>
-    <div class="menu-grid" id="menuList"></div>
-</div>
+<script th:src="@{/js/bill.js}"></script>
+<script th:src="@{/js/table.js}"></script>
+<script th:src="@{/js/menu.js}"></script>
 
-<div class="bill">
-    <h3>Bill</h3>
-    <div id="billList"></div>
-    <h4 id="total">Tổng: 0đ</h4>
-    <button class="pay-btn" onclick="pay()">Thanh toán</button>
-</div>
-
-<!-- JS -->
-<script src="js/table.js"></script>
-<script src="js/menu.js"></script>
-<script src="js/bill.js"></script>
-<script src="js/main.js"></script>
-
+<script>
+    window.onload = () => {
+        loadTables();
+        loadMenu();
+    };
+</script>
 </body>
 </html>

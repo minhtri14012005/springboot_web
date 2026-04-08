@@ -1,55 +1,75 @@
-let bill = {};
+let selectedItems = [];
 
-function addFood(food) {
-    if (!currentTable) {
+// ===== THÊM MÓN =====
+async function addToBill(product) {
+    if (!currentTableId || !currentHoaDonId) {
         alert("Chọn bàn trước!");
         return;
     }
 
-    if (!bill[food.id]) {
-        bill[food.id] = { ...food, qty: 1 };
-    } else {
-        bill[food.id].qty++;
-    }
-
-    renderBill();
-}
-
-function renderBill() {
-    const billList = document.getElementById("billList");
-    billList.innerHTML = "";
-
-    let total = 0;
-
-    Object.values(bill).forEach(item => {
-        total += item.price * item.qty;
-
-        const div = document.createElement("div");
-        div.className = "bill-item";
-
-        div.innerHTML = `
-            ${item.name}
-            <div>
-                <button class="btn" onclick="changeQty(${item.id}, -1)">-</button>
-                ${item.qty}
-                <button class="btn" onclick="changeQty(${item.id}, 1)">+</button>
-            </div>
-        `;
-
-        billList.appendChild(div);
+    // 🔥 GỌI API LƯU DB
+    await fetch('/api/pos/goi-mon', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            hoaDonId: currentHoaDonId,
+            monAnId: product.id,
+            soLuong: 1
+        })
     });
 
-    document.getElementById("total").innerText = "Tổng: " + total + "đ";
-}
+    // UI
+    const item = selectedItems.find(i => i.id === product.id);
 
-function changeQty(id, change) {
-    bill[id].qty += change;
-    if (bill[id].qty <= 0) delete bill[id];
+    if (item) item.quantity++;
+    else selectedItems.push({ ...product, quantity: 1 });
+
     renderBill();
 }
 
-function pay() {
-    alert("Thanh toán thành công!");
-    bill = {};
+// ===== HIỂN THỊ BILL =====
+function renderBill() {
+    const body = document.getElementById('bill-items-body');
+    let total = 0;
+
+    body.innerHTML = '';
+
+    selectedItems.forEach(item => {
+        total += item.price * item.quantity;
+
+        body.innerHTML += `
+        <tr>
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td>${item.price.toLocaleString()}đ</td>
+            <td>${(item.price * item.quantity).toLocaleString()}đ</td>
+        </tr>`;
+    });
+
+    document.getElementById('total-price').innerText =
+        total.toLocaleString() + 'đ';
+}
+
+// ===== THANH TOÁN =====
+async function handlePayment() {
+    if (!currentHoaDonId) {
+        alert("Chưa có hóa đơn!");
+        return;
+    }
+
+    const res = await fetch(`/api/pos/thanh-toan/${currentHoaDonId}`, {
+        method: 'POST'
+    });
+
+    const data = await res.json();
+
+    alert("Thanh toán thành công: " + data.result.toLocaleString() + "đ");
+
+    // 🔥 RESET
+    selectedItems = [];
+    currentHoaDonId = null;
+    currentTableId = null;
+
     renderBill();
+    loadTables();
 }

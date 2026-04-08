@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Admin - Nhà hàng</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -153,11 +153,12 @@
 
 <div id="toastContainer"></div>
 
-<script src="/js/core.js"></script>
-<script src="/js/MonAn.js"></script>
-<script src="/js/staff.js"></script>
-<script src="/js/HoaDon.js"></script>
-<script src="/js/dashbroad.js"></script>
+<script th:src="@{/js/core.js}"></script>
+<script th:src="@{/js/MonAn.js}"></script>
+<script th:src="@{/js/staff.js}"></script>
+<script th:src="@{/js/HoaDon.js}"></script>
+<script th:src="@{/js/dashbroad.js}"></script>
+
 
 </body>
 </html>
