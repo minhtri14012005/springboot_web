@@ -11,7 +11,7 @@ async function loadMenu() {
         div.className = 'food-card';
 
         div.innerHTML = `
-            <img src="${p.hinhAnh || ''}">
+            <img src="${p.imageUrl || ''}">
             <p>${p.tenMon}</p>
             <small>${p.gia.toLocaleString()}đ</small>
         `;

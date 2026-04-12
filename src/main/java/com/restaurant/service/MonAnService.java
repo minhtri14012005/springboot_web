@@ -21,6 +21,8 @@ public class MonAnService {
         MonAn mon = new MonAn();
         mon.setTenMon(request.getTenMon());
         mon.setGia(request.getGia());
+        mon.setActive(request.getActive());     // sửa thêm
+        mon.setImageUrl(request.getImageUrl());
 
         repository.save(mon);
 
@@ -32,23 +34,42 @@ public class MonAnService {
     }
 
     public List<MonAnResponse> getAll() {
-
         return repository.findAll().stream()
-                .filter(MonAn::getActive)
                 .map(mon -> MonAnResponse.builder()
                         .id(mon.getId())
                         .tenMon(mon.getTenMon())
                         .gia(mon.getGia())
+                        .imageUrl(mon.getImageUrl())
+                        .active(mon.getActive())
                         .build())
                 .toList();
     }
 
     public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new AppException(ErrorCode.MON_AN_NOT_FOUND);
+        }
 
+        repository.deleteById(id);
+    }
+    public MonAnResponse update(Long id, MonAnRequest request) {
         MonAn mon = repository.findById(id)
                 .orElseThrow(() -> new AppException(ErrorCode.MON_AN_NOT_FOUND));
 
-        mon.setActive(false);
+        mon.setTenMon(request.getTenMon());
+        mon.setGia(request.getGia());
+        mon.setActive(request.getActive());
+        mon.setImageUrl(request.getImageUrl()); // thêm
+
+
         repository.save(mon);
+
+        return MonAnResponse.builder()
+                .id(mon.getId())
+                .tenMon(mon.getTenMon())
+                .gia(mon.getGia())
+                .imageUrl(mon.getImageUrl())
+                .active(mon.getActive())
+                .build();
     }
 }
