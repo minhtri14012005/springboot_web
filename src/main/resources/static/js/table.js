@@ -150,5 +150,3 @@ async function handlePayment() {
     renderBill([]);
     await loadTables();
 }
-
-window.onload = loadTables;
