@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CTHDRepository extends JpaRepository<CTHD, Long> {
     List<CTHD> findByHoaDon(HoaDon hoaDon);
+    void deleteByMonAnId(Long monAnId);
 }
