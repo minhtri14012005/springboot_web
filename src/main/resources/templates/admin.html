@@ -234,7 +234,8 @@
     </div><!-- /admin-layout -->
 
     <!-- ====================================================
-     MODAL: MÓN ĂN
+
+ MODAL: MÓN ĂN
 ==================================================== -->
     <div class="modal-overlay" id="modalMonAn">
         <div class="modal">
@@ -246,106 +247,112 @@
                 <label class="form-label">Tên món <span class="required">*</span></label>
                 <input type="text" id="tenMon" class="form-input" placeholder="Nhập tên món ăn..." />
             </div>
+
             <div class="form-group">
-                <div class="form-group">
-                    <label class="form-label">Loại món</label>
-                    <select id="category" class="form-input">
-                        <option value="COM">Cơm</option>
-                        <option value="BUN_PHO">Bún/Phở</option>
-                        <option value="BANH_MI">Bánh mì</option>
-                        <option value="LAU_NUONG">Lẩu/Nướng</option>
-                        <option value="DO_UONG">Đồ uống</option>
-                        <option value="AN_VAT">Ăn vặt</option>
-                        <option value="TRANG_MIENG">Tráng miệng</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Giá (VNĐ) <span class="required">*</span></label>
-                    <input type="number" id="gia" class="form-input" placeholder="Nhập giá..." min="0" />
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Trạng thái</label>
-                    <select id="monAnActive" class="form-input">
-                        <option value="true">Đang bán</option>
-                        <option value="false">Ngừng bán</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Link hình ảnh</label>
-                    <input type="text" id="imageUrl" class="form-input" placeholder="Nhập URL hình ảnh..." />
-                </div>
+                <label class="form-label">Loại món</label>
+                <select id="category" class="form-input">
+                    <option value="COM">Cơm</option>
+                    <option value="BUN_PHO">Bún/Phở</option>
+                    <option value="BANH_MI">Bánh mì</option>
+                    <option value="LAU_NUONG">Lẩu/Nướng</option>
+                    <option value="DO_UONG">Đồ uống</option>
+                    <option value="AN_VAT">Ăn vặt</option>
+                    <option value="TRANG_MIENG">Tráng miệng</option>
+                </select>
+            </div>
 
-                <div class="modal-actions">
-                    <button class="btn-secondary" onclick="closeModal('modalMonAn')">Hủy</button>
-                    <button class="btn-primary" onclick="submitMonAn()">Lưu</button>
-                </div>
+            <div class="form-group">
+                <label class="form-label">Giá (VNĐ) <span class="required">*</span></label>
+                <input type="number" id="gia" class="form-input" placeholder="Nhập giá..." min="0" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Trạng thái</label>
+                <select id="monAnActive" class="form-input">
+                    <option value="true">Đang bán</option>
+                    <option value="false">Ngừng bán</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Link hình ảnh</label>
+                <input type="text" id="imageUrl" class="form-input" placeholder="Nhập URL hình ảnh..." />
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal('modalMonAn')">Hủy</button>
+                <button class="btn-primary" onclick="submitMonAn()">Lưu</button>
             </div>
         </div>
+    </div>
 
-        <!-- ====================================================
+    <!-- ====================================================
      MODAL: NHÂN VIÊN
-==================================================== -->
-        <div class="modal-overlay" id="modalNhanVien">
-            <div class="modal">
-                <div class="modal-title" id="modalNhanVienTitle">Thêm nhân viên</div>
+    ==================================================== -->
+    <div class="modal-overlay" id="modalNhanVien">
+        <div class="modal">
+            <div class="modal-title" id="modalNhanVienTitle">Thêm nhân viên</div>
 
-                <input type="hidden" id="nhanVienId" />
+            <input type="hidden" id="nhanVienId" />
 
-                <div class="form-group">
-                    <label class="form-label">Username <span class="required">*</span></label>
-                    <input type="text" id="nvUsername" class="form-input" placeholder="Nhập username..." />
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Email <span class="required">*</span></label>
-                    <input type="email" id="nvEmail" class="form-input" placeholder="Nhập email..." />
-                </div>
-                <div class="form-group" id="nvPasswordGroup">
-                    <label class="form-label">Mật khẩu <span class="required">*</span></label>
-                    <input type="password" id="nvPassword" class="form-input" placeholder="Nhập mật khẩu..." />
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Vai trò</label>
-                    <select id="nvRole" class="form-input">
-                        <option value="STAFF">STAFF</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label class="form-label">Username <span class="required">*</span></label>
+                <input type="text" id="nvUsername" class="form-input" placeholder="Nhập username..." />
+            </div>
 
+            <div class="form-group">
+                <label class="form-label">Email <span class="required">*</span></label>
+                <input type="email" id="nvEmail" class="form-input" placeholder="Nhập email..." />
+            </div>
 
-                <div class="modal-actions">
-                    <button class="btn-secondary" onclick="closeModal('modalNhanVien')">Hủy</button>
-                    <button class="btn-primary" onclick="submitNhanVien()">Lưu</button>
-                </div>
+            <div class="form-group" id="nvPasswordGroup">
+                <label class="form-label">Mật khẩu <span class="required">*</span></label>
+                <input type="password" id="nvPassword" class="form-input" placeholder="Nhập mật khẩu..." />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Vai trò</label>
+                <select id="nvRole" class="form-input">
+                    <option value="STAFF">STAFF</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal('modalNhanVien')">Hủy</button>
+                <button class="btn-primary" onclick="submitNhanVien()">Lưu</button>
             </div>
         </div>
+    </div>
 
-        <!-- ====================================================
+    <!-- ====================================================
      MODAL: XÁC NHẬN XÓA
-==================================================== -->
-        <div class="modal-overlay" id="modalDelete">
-            <div class="modal" style="max-width:380px;text-align:center;">
-                <div style="font-size:40px;margin-bottom:12px;">⚠️</div>
-                <div class="modal-title">Xác nhận xóa</div>
-                <p id="deleteMsg" style="color:#666;margin:10px 0 20px;">Bạn có chắc muốn xóa?</p>
-                <div class="modal-actions" style="justify-content:center;">
-                    <button class="btn-secondary" onclick="closeModal('modalDelete')">Hủy</button>
-                    <button class="btn-danger" id="btnConfirmDelete">Xóa</button>
-                </div>
+    ==================================================== -->
+    <div class="modal-overlay" id="modalDelete">
+        <div class="modal" style="max-width:380px;text-align:center;">
+            <div style="font-size:40px;margin-bottom:12px;">⚠️</div>
+            <div class="modal-title">Xác nhận xóa</div>
+            <p id="deleteMsg" style="color:#666;margin:10px 0 20px;">Bạn có chắc muốn xóa?</p>
+
+            <div class="modal-actions" style="justify-content:center;">
+                <button class="btn-secondary" onclick="closeModal('modalDelete')">Hủy</button>
+                <button class="btn-danger" id="btnConfirmDelete">Xóa</button>
             </div>
         </div>
+    </div>
 
-        <!-- ====================================================
+    <!-- ====================================================
      MODAL: CHI TIẾT HÓA ĐƠN
-==================================================== -->
-        <div class="modal-overlay" id="modalHoaDon">
-            <div class="modal" style="width:500px;max-width:95vw;">
-                <div class="modal-title">Chi tiết hóa đơn</div>
-                <div id="hoaDonDetail" style="margin:12px 0;">Đang tải...</div>
-                <div class="modal-actions">
-                    <button class="btn-secondary" onclick="closeModal('modalHoaDon')">Đóng</button>
-                </div>
+    ==================================================== -->
+    <div class="modal-overlay" id="modalHoaDon">
+        <div class="modal" style="width:500px;max-width:95vw;">
+            <div class="modal-title">Chi tiết hóa đơn</div>
+            <div id="hoaDonDetail" style="margin:12px 0;">Đang tải...</div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal('modalHoaDon')">Đóng</button>
             </div>
         </div>
-
+    </div>
         <!-- TOAST -->
         <div id="toastContainer"></div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
